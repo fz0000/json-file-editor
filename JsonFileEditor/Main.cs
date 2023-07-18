@@ -59,7 +59,7 @@ namespace JsonFileEditor
 
         private void SToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("还没做好");
+            MessageBox.Show("--- Not Ready ---");
         }
 
         private void LoadDataFiles(string strFolder)
