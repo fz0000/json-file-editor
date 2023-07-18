@@ -1,3 +1,5 @@
+[![.NET Core Desktop](https://github.com/fz0000/json-file-editor/actions/workflows/dotnet-desktop.yml/badge.svg?branch=main)](https://github.com/fz0000/json-file-editor/actions/workflows/dotnet-desktop.yml)
+
 # json-file-editor
 
 if your json files has the same structure, you can put them in the same folder and edit them together.
