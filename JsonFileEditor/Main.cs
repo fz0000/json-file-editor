@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -141,7 +142,7 @@ namespace JsonFileEditor
                         {
                             if (token.Value.Type == JTokenType.Array)
                             {
-                                value = string.Join("\r\n", token.Value);
+                                value = string.Join(Environment.NewLine, token.Value);
                             }
                             else
                             {
