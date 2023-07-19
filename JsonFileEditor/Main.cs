@@ -103,7 +103,7 @@ namespace JsonFileEditor
             Dictionary<string, int> dictKeys = new Dictionary<string, int>();//value, intValue
             foreach (string file in jsonFiles)
             {
-                if (!file.Contains(toolStripTextBoxExclude.Text))
+                if (!file.Contains(toolStripTextBoxExclude.Text) || toolStripTextBoxExclude.Text == "")
                 {
                     //col
                     string strColName = Path.GetFileNameWithoutExtension(file);
