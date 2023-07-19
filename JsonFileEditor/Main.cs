@@ -59,7 +59,37 @@ namespace JsonFileEditor
 
         private void SToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("--- Not Ready ---");
+            string strFolder = toolStripTextBoxFolder.Text;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                if (col.Index == 0) { continue; }
+
+                string strJsonFile = strFolder + "\\" + col.HeaderText + ".json";
+                JObject jData = new JObject();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells[0].Value == null) { continue; }
+
+                    string key = row.Cells[0].Value.ToString();
+                    object objValue = row.Cells[col.Index].Value;
+                    object jValue;
+                    if (objValue == null) { jValue = ""; }
+                    else
+                    {
+                        jValue = objValue.ToString();
+                        if (objValue.ToString().Contains(Environment.NewLine))
+                        {
+                            string[] separatingStrings = { Environment.NewLine };
+                            jValue = objValue.ToString().Split(separatingStrings, StringSplitOptions.None);
+                        }
+                    }
+                    //add to json
+                    jData.Add(new JProperty(key, jValue));
+                }
+                //write to file
+                string strJsonData = Convert.ToString(jData);
+                File.WriteAllText(strJsonFile, strJsonData, System.Text.Encoding.UTF8);
+            }
         }
 
         private void LoadDataFiles(string strFolder)
