@@ -56,7 +56,6 @@ namespace JsonFileEditor
                 toolStripTextBoxFolder.Text = folderBrowserDialog.SelectedPath;
                 LoadDataFiles(folderBrowserDialog.SelectedPath);
             }
-
         }
 
         private void SToolStripButton_Click(object sender, EventArgs e)
