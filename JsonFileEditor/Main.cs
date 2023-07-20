@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace JsonFileEditor
@@ -12,6 +12,7 @@ namespace JsonFileEditor
         public Main()
         {
             InitializeComponent();
+            Text += " v" + Application.ProductVersion;
             ReadConfig();
         }
         private void ReadConfig()
@@ -89,7 +90,13 @@ namespace JsonFileEditor
                 }
                 //write to file
                 string strJsonData = Convert.ToString(jData);
-                File.WriteAllText(strJsonFile, strJsonData, System.Text.Encoding.UTF8);
+                //File.WriteAllText(strJsonFile, strJsonData, System.Text.Encoding.UTF8);
+                using (var sw = new StreamWriter(strJsonFile, false, new UTF8Encoding(false)))
+                {
+                    sw.Write(strJsonData);
+                    sw.Flush();
+                    sw.Close();
+                }
             }
         }
 
